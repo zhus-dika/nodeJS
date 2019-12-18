@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-
-const base = './test';
+const base = '../test';
 var allFiles = [];
 module.exports = (base, level) => {
   const files = fs.readdirSync(base);
