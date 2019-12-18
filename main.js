@@ -1,5 +1,13 @@
 const fs = require('fs');
 
-const sortFiles = require('./sortFiles');
+const arrangmentFiles = require('./arrangmentFiles');
 const base = './test';
-sortFiles(base);
+arrangmentFiles(base);
+
+
+
+
+
+
+
+
