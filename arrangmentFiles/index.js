@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 var mkdirp = require('mkdirp');
 const readFiles = require('../readFiles');
-const newDir = './temp';
-module.exports = (base) => {
+module.exports = (base, newDir) => {
     var files = readFiles(base, 0);
     /****create new dir for files***/
     mkdirp(newDir, function (err) {
@@ -25,6 +24,5 @@ module.exports = (base) => {
                 }
             });
         }
-
     });
 }
