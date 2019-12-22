@@ -32,7 +32,7 @@ while (argv) {
     if (flag) break;
     argv = process.argv[i];
 }
-
+arrangmentFiles(sourceDir, targetDir);
 
 
 
