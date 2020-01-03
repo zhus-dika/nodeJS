@@ -9,10 +9,10 @@ module.exports = (base, level) => {
     if (state.isDirectory()) {
       module.exports(localBase, level + 1);
     } else {
-      allFiles.push(localBase);
+        allFiles.push(localBase);
     }
   })
-  return allFiles;
+  return allFiles
 }
 
 
