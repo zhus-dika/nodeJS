@@ -1,13 +1,14 @@
 const formidable = require('formidable')
 const fs = require('fs')
 const path = require('path')
-const db = require('../models/db')()
-
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+ 
+const adapter = new FileSync('./models/db.json')
+const db = low(adapter)
+ 
 module.exports.get = (req, res, next) => {
-  res.render('../../template/pages/login', {
-    title: 'My upload',
-    msg: req.query.msg
-  })
+  res.render('../../template/pages/login')
 }
 
 module.exports.post = (req, res, next) => {
@@ -20,8 +21,9 @@ module.exports.post = (req, res, next) => {
     if (valid.err) {
       return res.redirect(`/?msg=${valid.status}`)
     }
-    db.set(fields.email, fields.password)
-    db.save()
+    db.get('users')
+  .push({ email: fields.email, password: fields.password})
+  .write()
   })
   res.redirect('/')
 }

@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "email": "zhus.botagoz@gmail.com",
+      "password": "vcxc"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "1111"
+    }
+  ],
+  "messages": [
+    {
+      "name": "dina",
+      "email": "dina@gmail.com",
+      "message": "madiko"
+    },
+    {
+      "name": "madi",
+      "email": "madi@gmail.com",
+      "message": "hihihi"
+    }
+  ],
+  "skills": [],
+  "upload": []
+}
