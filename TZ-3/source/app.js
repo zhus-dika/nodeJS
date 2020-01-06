@@ -3,7 +3,7 @@ const path = require('path')
 const app = express()
 
 // view engine setup
-console.log(__dirname)
+//console.log(__dirname)
 app.set('views', path.join(__dirname, 'template'))
 app.set('view engine', 'pug')
 

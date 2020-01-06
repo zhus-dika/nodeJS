@@ -22,8 +22,8 @@ module.exports.post = (req, res, next) => {
         return res.redirect(`/?msg=${valid.status}`)
       }
       db.get('messages')
-  .push({name: fields.name, email: fields.email, message: fields.message})
-  .write()
+      .push({name: fields.name, email: fields.email, message: fields.message})
+      .write()
     })
     res.redirect('/?msg=Сообщение успешно отправлено')
   }
