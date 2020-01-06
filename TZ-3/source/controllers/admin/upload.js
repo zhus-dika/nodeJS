@@ -3,31 +3,17 @@ const fs = require('fs')
 const formidable = require('formidable')
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
- 
 const adapter = new FileSync('./models/db.json')
 const db = low(adapter)
  
-
 module.exports.post = (req, res, next) => {
   let form = new formidable.IncomingForm()
-  let upload = path.join('./public', 'upload')
-
-  if (!fs.existsSync(upload)) {
-    fs.mkdirSync(upload)
-  }
-
-  console.log(`dirname: ${__dirname}`)
-  console.log(`cwd: ${process.cwd()}`)
-
-  form.uploadDir = path.join(process.cwd(), upload)
-
+  let upload = '../public/assets/img/products'
+  form.uploadDir = upload
   form.parse(req, function (err, fields, files) {
-    console.log(files.photo)
-
     if (err) {
       return next(err)
     }
-
     const valid = validation(fields, files)
 
     if (valid.err) {
@@ -42,11 +28,9 @@ module.exports.post = (req, res, next) => {
         console.error(err.message)
         return
       }
-
-      let dir = fileName.substr(fileName.indexOf('\\'))
-
-      //db.set(fields.name, dir)
-      //db.save()
+      db.get('upload')
+      .push({ photo: fileName, name: fields.name, price: fields.price})
+      .write()
       res.redirect('/?msg=Картинка успешно загружена')
     })
   })
@@ -56,8 +40,11 @@ const validation = (fields, files) => {
   if (files.photo.name === '' || files.photo.size === 0) {
     return { status: 'Не загружена картинка!', err: true }
   }
-  /*if (!fields.name) {
-    return { status: 'Не указано описание картинки!', err: true }
-  }*/
+  if (!fields.name) {
+    return { status: 'Не указано имя картинки!', err: true }
+  }
+  if (!fields.price) {
+    return { status: 'Не указано price!', err: true }
+  }
   return { status: 'Ok', err: false }
 }

@@ -22,10 +22,10 @@ module.exports.post = (req, res, next) => {
       return res.redirect(`/?msg=${valid.status}`)
     }
     db.get('users')
-  .push({ email: fields.email, password: fields.password})
-  .write()
+    .push({ email: fields.email, password: fields.password})
+    .write()
   })
-  res.redirect('/')
+  res.redirect('/admin')
 }
 
 const validation = (fields) => {

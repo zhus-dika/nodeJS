@@ -43,5 +43,11 @@
       "years": "5"
     }
   ],
-  "upload": []
+  "upload": [
+    {
+      "photo": "../public/assets/img/products/1280px-Claude_Monet_-_Morning_on_the_Seine_-_Google_Art_Project.jpg",
+      "name": "monet",
+      "price": "invaluable"
+    }
+  ]
 }
