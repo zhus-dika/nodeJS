@@ -1,10 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const formidable = require('formidable')
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('./models/db.json')
-const db = low(adapter)
+const db = require('../../models/db')
  
 module.exports.post = (req, res, next) => {
   let form = new formidable.IncomingForm()

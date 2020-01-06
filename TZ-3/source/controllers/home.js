@@ -1,14 +1,11 @@
 const formidable = require('formidable')
 const fs = require('fs')
 const path = require('path')
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('./models/db.json')
-const db = low(adapter)
+const db = require('../models/db')
 module.exports.get = function (req, res) {
     res.render('../template/pages/index')
   }
-  // Set some defaults
+    // Set some defaults
 db.defaults({ users: [], messages: [], skills: [], upload: [] })
 .write()
 module.exports.post = (req, res, next) => {
