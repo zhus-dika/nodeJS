@@ -18,10 +18,10 @@ module.exports.post = (req, res, next) => {
       return res.redirect(`/?msg=${valid.status}`)
     }
     db.get('skills')
-  .push({ age: fields.age, concerts: fields.concerts, cities: fields.cities, years: fields.years})
-  .write()
+    .push({ age: fields.age, concerts: fields.concerts, cities: fields.cities, years: fields.years})
+    .write()
   })
-  res.redirect('back')
+  res.redirect('/?msg=Скиллы записаны в json')
 }
 
 const validation = (fields) => {

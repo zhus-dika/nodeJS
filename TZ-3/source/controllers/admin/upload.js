@@ -8,7 +8,7 @@ const db = low(adapter)
  
 module.exports.post = (req, res, next) => {
   let form = new formidable.IncomingForm()
-  let upload = '../public/assets/img/products'
+  let upload = path.join(process.cwd(),'images','products')
   form.uploadDir = upload
   form.parse(req, function (err, fields, files) {
     if (err) {

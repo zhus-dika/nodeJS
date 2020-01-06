@@ -6,7 +6,7 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('./models/db.json')
 const db = low(adapter)
 module.exports.get = function (req, res) {
-    res.render('../../template/pages/index')
+    res.render('../template/pages/index')
   }
   // Set some defaults
 db.defaults({ users: [], messages: [], skills: [], upload: [] })
@@ -25,7 +25,7 @@ module.exports.post = (req, res, next) => {
   .push({name: fields.name, email: fields.email, message: fields.message})
   .write()
     })
-    res.redirect('/')
+    res.redirect('/?msg=Сообщение успешно отправлено')
   }
   
   const validation = (fields) => {

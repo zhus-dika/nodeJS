@@ -25,7 +25,7 @@ module.exports.post = (req, res, next) => {
     .push({ email: fields.email, password: fields.password})
     .write()
   })
-  res.redirect('/admin')
+  res.redirect('/?msg=Данные успешно записаны в json')
 }
 
 const validation = (fields) => {
