@@ -8,7 +8,7 @@ const adapter = new FileSync('./models/db.json')
 const db = low(adapter)
  
 module.exports.get = (req, res, next) => {
-  res.render('../../template/pages/login')
+  res.render('../template/pages/login')
 }
 
 module.exports.post = (req, res, next) => {

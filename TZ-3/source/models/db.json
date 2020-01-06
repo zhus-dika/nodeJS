@@ -1,12 +1,8 @@
 {
   "users": [
     {
-      "email": "zhus.botagoz@gmail.com",
-      "password": "vcxc"
-    },
-    {
-      "email": "abc@gmail",
-      "password": "1111"
+      "email": "abc@gmail.com",
+      "password": "12345"
     }
   ],
   "messages": [
@@ -21,6 +17,31 @@
       "message": "hihihi"
     }
   ],
-  "skills": [],
+  "skills": [
+    {
+      "age": "35",
+      "concerts": "10",
+      "cities": "10",
+      "years": "15"
+    },
+    {
+      "age": "11",
+      "concerts": "11",
+      "cities": "11",
+      "years": "11"
+    },
+    {
+      "age": "35",
+      "concerts": "10",
+      "cities": "20",
+      "years": "15"
+    },
+    {
+      "age": "11",
+      "concerts": "22",
+      "cities": "33",
+      "years": "5"
+    }
+  ],
   "upload": []
 }
