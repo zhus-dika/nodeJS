@@ -6,7 +6,8 @@ const db = require('../models/db')
 module.exports.get = (req, res, next) => {
   res.render('../template/pages/login')
 }
-
+db.defaults({ users: [], messages: [], skills: [], upload: [] })
+.write()
 module.exports.post = (req, res, next) => {
   let form = new formidable.IncomingForm()
   form.parse(req, function (err, fields) {

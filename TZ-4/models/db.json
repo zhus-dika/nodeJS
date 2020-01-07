@@ -1,0 +1,71 @@
+{
+  "users": [
+    {
+      "email": "abc@gmail.com",
+      "password": "12345"
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "777"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "1111"
+    }
+  ],
+  "skills": [
+    {
+      "age": "35",
+      "concerts": "10",
+      "cities": "10",
+      "years": "15"
+    },
+    {
+      "age": "11",
+      "concerts": "11",
+      "cities": "11",
+      "years": "11"
+    },
+    {
+      "age": "35",
+      "concerts": "10",
+      "cities": "20",
+      "years": "15"
+    },
+    {
+      "age": "11",
+      "concerts": "22",
+      "cities": "33",
+      "years": "5"
+    },
+    {
+      "age": "90",
+      "concerts": "111",
+      "cities": "50",
+      "years": "50"
+    },
+    {
+      "age": "35",
+      "concerts": "5",
+      "cities": "5",
+      "years": "5"
+    }
+  ],
+  "upload": [
+    {
+      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_de406676ac28617126157ad4f057f12a",
+      "name": "van gogh",
+      "price": "invaluable"
+    },
+    {
+      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_e561eb4bd003ba2c309d653ac7ea70f8",
+      "name": "monet",
+      "price": "invaluable"
+    },
+    {
+      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_ff68d3ada77463eda68e19692f0e5ade",
+      "name": "van gogh",
+      "price": "invaluable"
+    }
+  ]
+}

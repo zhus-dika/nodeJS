@@ -9,18 +9,6 @@
       "password": "777"
     }
   ],
-  "messages": [
-    {
-      "name": "dina",
-      "email": "dina@gmail.com",
-      "message": "madiko"
-    },
-    {
-      "name": "van gogh",
-      "email": "abc@gmail",
-      "message": "wow"
-    }
-  ],
   "skills": [
     {
       "age": "35",
@@ -64,5 +52,6 @@
       "name": "van gogh",
       "price": "invaluable"
     }
-  ]
+  ],
+  "messages": []
 }

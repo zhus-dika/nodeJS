@@ -1,13 +1,11 @@
 const formidable = require('formidable')
 const fs = require('fs')
 const path = require('path')
-const db = require('../models/db')
+const nodemailer = require('nodemailer')
+const config = require('../config.json')
 module.exports.get = function (req, res) {
     res.render('../template/pages/index')
   }
-    // Set some defaults
-db.defaults({ users: [], messages: [], skills: [], upload: [] })
-.write()
 module.exports.post = (req, res, next) => {
     let form = new formidable.IncomingForm()
     form.parse(req, function (err, fields) {
@@ -18,9 +16,27 @@ module.exports.post = (req, res, next) => {
       if (valid.err) {
         return res.redirect(`/?msg=${valid.status}`)
       }
-      db.get('messages')
-      .push({name: fields.name, email: fields.email, message: fields.message})
-      .write()
+      // инициализируем модуль для отправки писем и указываем данные из конфига
+  const transporter = nodemailer.createTransport(config.mail.smtp)
+  const mailOptions = {
+    from: `"${fields.name}" <${fields.email}>`,
+    to: config.mail.smtp.auth.user,
+    subject: config.mail.subject,
+    text:
+      fields.message.trim().slice(0, 500) +
+      `\n Отправлено с: <${fields.email}>`
+  }
+  // отправляем почту
+  transporter.sendMail(mailOptions, function (error, info) {
+    // если есть ошибки при отправке - сообщаем об этом
+    if (error) {
+      return res.json({
+        msg: `При отправке письма произошла ошибка!: ${error}`,
+        status: 'Error'
+      })
+    }
+    res.json({ msg: 'Письмо успешно отправлено!', status: 'Ok' })
+  })
     })
     res.redirect('/?msg=Сообщение успешно отправлено')
   }
