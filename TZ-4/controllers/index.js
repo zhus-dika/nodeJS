@@ -9,9 +9,18 @@ module.exports.index = async (ctx, next) => {
     await ctx.render('pages/index')
   }
   /*==============================================*/
-module.exports.auth = async(ctx) => {
+  const validationAuth = (fields) => {
+    if (!fields.email) {
+      return { status: 'Не указан email!', err: true }
+    }
+    if (!fields.password) {
+      return { status: 'Не указан password!', err: true }
+    }
+    return { status: 'Ok', err: false }
+  }
+  module.exports.auth = async(ctx) => {
   let fields = ctx.request.body
-  const valid = validation(fields)
+  const valid = validationAuth(fields)
   if (valid.err) {
     return ctx.redirect(`/?msg=${valid.status}`)
   }
@@ -19,15 +28,6 @@ module.exports.auth = async(ctx) => {
   .push({ email: fields.email, password: fields.password})
   .write()
   await ctx.redirect('/?msg=Авторизация прошла успешно')
-}
-const validation = (fields) => {
-  if (!fields.email) {
-    return { status: 'Не указан email!', err: true }
-  }
-  if (!fields.password) {
-    return { status: 'Не указан password!', err: true }
-  }
-  return { status: 'Ok', err: false }
 }
 /*==============================================*/
 /*module.exports.message = async (ctx, next) => {
@@ -62,4 +62,31 @@ module.exports.login = async(ctx, next) => {
 /*==============================================*/
 module.exports.admin = async (ctx, next) => {
   await ctx.render('pages/admin')
+}
+/*==============================================*/
+const validationSkills = (fields) => {
+  if (!fields.age) {
+    return { status: 'Не указано age!', err: true }
+  }
+  if (!fields.concerts) {
+    return { status: 'Не указано concerts!', err: true }
+  }
+  if (!fields.cities) {
+    return { status: 'Не указано cities!', err: true }
+  }
+  if (!fields.years) {
+    return { status: 'Не указано years!', err: true }
+  }
+  return { status: 'Ok', err: false }
+}
+module.exports.skills = async(ctx) => {
+  let fields = ctx.request.body
+  const valid = validationSkills(fields)
+  if (valid.err) {
+    return ctx.redirect(`/?msg=${valid.status}`)
+  }
+  db.get('skills')
+  .push({ age: fields.age, concerts: fields.concerts, cities: fields.cities, years: fields.years})
+  .write()
+  await ctx.redirect('/?msg=Данные успешно записаны в json')
 }

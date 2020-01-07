@@ -16,9 +16,9 @@ router.get('/admin', controllers.admin)
     formidable: {
         uploadDir: path.join(process.cwd(), 'public', 'upload')
     }
-}),controllers.upload)
+}),controllers.upload)*/
 router.post('/admin/skills', koaBody({
     multipart: true
-}),controllers.skills)*/
+}),controllers.skills)
 
 module.exports = router
