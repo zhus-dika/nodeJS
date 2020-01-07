@@ -7,6 +7,10 @@
     {
       "email": "abc@gmail.com",
       "password": "777"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "1111"
     }
   ],
   "skills": [
