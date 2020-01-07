@@ -8,7 +8,7 @@ const config = require('../config.json')
 module.exports.index = async (ctx, next) => {
     await ctx.render('pages/index')
   }
-/*==============================================*/
+  /*==============================================*/
   const validationAuth = (fields) => {
     if (!fields.email) {
       return { status: 'Не указан email!', err: true }
@@ -33,6 +33,7 @@ module.exports.index = async (ctx, next) => {
 module.exports.message = async(ctx, next) => {
   const transporter = nodemailer.createTransport(config.mail.smtp)
   const fields = ctx.request.body 
+
   const mailOptions = {
     from: `"${fields.name}" <${fields.email}>`,
     to: config.mail.smtp.auth.user,
@@ -46,6 +47,7 @@ module.exports.message = async(ctx, next) => {
     // если есть ошибки при отправке - сообщаем об этом
     if (error) {
       return ctx.json({
+
         msg: `При отправке письма произошла ошибка!: ${error}`,
         status: 'Error'
       })
