@@ -11,12 +11,6 @@ module.exports.post = (req, res, next) => {
     if (err) {
       return next(err)
     }
-    const valid = validation(fields, files)
-
-    if (valid.err) {
-      fs.unlinkSync(files.photo.path)
-      return res.redirect(`/?msg=${valid.status}`)
-    }
 
     const fileName = path.join(upload, files.photo.name)
 
@@ -28,20 +22,8 @@ module.exports.post = (req, res, next) => {
       db.get('upload')
       .push({ photo: fileName, name: fields.name, price: fields.price})
       .write()
-      res.redirect('/?msg=Картинка успешно загружена')
+      req.flash('msgfile','Картинка успешно загружена')
+      res.redirect('/admin')
     })
   })
-}
-
-const validation = (fields, files) => {
-  if (files.photo.name === '' || files.photo.size === 0) {
-    return { status: 'Не загружена картинка!', err: true }
-  }
-  if (!fields.name) {
-    return { status: 'Не указано имя картинки!', err: true }
-  }
-  if (!fields.price) {
-    return { status: 'Не указано price!', err: true }
-  }
-  return { status: 'Ok', err: false }
 }

@@ -5,8 +5,12 @@
       "password": "12345"
     },
     {
-      "email": "abc@gmail.com",
-      "password": "777"
+      "email": "abc@gmail",
+      "password": "qwerty"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "nnbcg"
     }
   ],
   "skills": [
@@ -21,24 +25,6 @@
       "concerts": "11",
       "cities": "11",
       "years": "11"
-    },
-    {
-      "age": "35",
-      "concerts": "10",
-      "cities": "20",
-      "years": "15"
-    },
-    {
-      "age": "11",
-      "concerts": "22",
-      "cities": "33",
-      "years": "5"
-    },
-    {
-      "age": "90",
-      "concerts": "111",
-      "cities": "50",
-      "years": "50"
     }
   ],
   "upload": [
