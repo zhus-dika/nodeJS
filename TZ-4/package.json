@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "koa": "^2.11.0",
+    "koa-better-flash": "0.0.4",
     "koa-body": "^4.1.1",
+    "koa-generic-session": "^2.0.4",
     "koa-multer": "^1.0.2",
     "koa-pug": "^4.0.3",
     "koa-router": "^7.4.0",

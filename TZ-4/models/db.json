@@ -11,21 +11,41 @@
     {
       "email": "abc@gmail",
       "password": "1111"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "vfdvd"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "bfdxbxdf"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "1111"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "bfdzbxd"
+    },
+    {
+      "email": "zhus.botagoz@gmail.com",
+      "password": "bxdngxb"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "hgfxhgdx"
+    },
+    {
+      "email": "zhus.botagoz@gmail.com",
+      "password": "vfdsbfd"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "bfdzbz"
     }
   ],
   "skills": [
-    {
-      "age": "35",
-      "concerts": "10",
-      "cities": "10",
-      "years": "15"
-    },
-    {
-      "age": "11",
-      "concerts": "11",
-      "cities": "11",
-      "years": "11"
-    },
     {
       "age": "35",
       "concerts": "10",
@@ -39,40 +59,31 @@
       "years": "5"
     },
     {
-      "age": "90",
-      "concerts": "111",
-      "cities": "50",
-      "years": "50"
-    },
-    {
-      "age": "35",
-      "concerts": "5",
-      "cities": "5",
-      "years": "5"
+      "age": "11",
+      "concerts": "11",
+      "cities": "11",
+      "years": "11"
     }
   ],
   "upload": [
     {
-<<<<<<< HEAD
       "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_de406676ac28617126157ad4f057f12a",
       "name": "van gogh",
       "price": "invaluable"
     },
     {
-      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_e561eb4bd003ba2c309d653ac7ea70f8",
-=======
       "photo": "../public/assets/img/products/1280px-Claude_Monet_-_Morning_on_the_Seine_-_Google_Art_Project.jpg",
->>>>>>> 0036bf0414313f4b0b9c29c1df12ca4c362e2ce0
       "name": "monet",
       "price": "invaluable"
     },
     {
-<<<<<<< HEAD
-      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_ff68d3ada77463eda68e19692f0e5ade",
-=======
       "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-3/source/images/products/Vincent_van_Gogh_-_Wheat_Field_with_Cypresses_-_Google_Art_Project.jpg",
->>>>>>> 0036bf0414313f4b0b9c29c1df12ca4c362e2ce0
       "name": "van gogh",
+      "price": "invaluable"
+    },
+    {
+      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_ca92c3126eb6e0efcfd653cd33846dd8",
+      "name": "renoir",
       "price": "invaluable"
     }
   ]

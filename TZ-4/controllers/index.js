@@ -6,34 +6,21 @@ const db = require('../models/db')
 const config = require('../config.json')
 /*==============================================*/
 module.exports.index = async (ctx, next) => {
-    await ctx.render('pages/index')
+    await ctx.render('pages/index', {msgemail: ctx.flash('msgemail')})
   }
   /*==============================================*/
-  const validationAuth = (fields) => {
-    if (!fields.email) {
-      return { status: 'Не указан email!', err: true }
-    }
-    if (!fields.password) {
-      return { status: 'Не указан password!', err: true }
-    }
-    return { status: 'Ok', err: false }
-  }
   module.exports.auth = async(ctx) => {
   let fields = ctx.request.body
-  const valid = validationAuth(fields)
-  if (valid.err) {
-    return ctx.redirect(`/?msg=${valid.status}`)
-  }
   db.get('users')
   .push({ email: fields.email, password: fields.password})
   .write()
-  await ctx.redirect('/?msg=Авторизация прошла успешно')
+  ctx.flash('msglogin', 'Авторизация прошла успешно')
+  await ctx.redirect('/login')
 }
 /*==============================================*/
 module.exports.message = async(ctx, next) => {
   const transporter = nodemailer.createTransport(config.mail.smtp)
   const fields = ctx.request.body 
-
   const mailOptions = {
     from: `"${fields.name}" <${fields.email}>`,
     to: config.mail.smtp.auth.user,
@@ -52,68 +39,35 @@ module.exports.message = async(ctx, next) => {
         status: 'Error'
       })
     }
-    ctx.json({ msg: 'Письмо успешно отправлено!', status: 'Ok' })
   })
-    await ctx.redirect('/?msg=Сообщение успешно отправлено')
+  ctx.flash('msgemail', 'Сообщение успешно отправлено')
+  await ctx.redirect('/')
   }
 
 /*==============================================*/
 module.exports.login = async(ctx, next) => {
-  await ctx.render('pages/login')
+  await ctx.render('pages/login', { msglogin: ctx.flash('msglogin')})
 }
 /*==============================================*/
 module.exports.admin = async (ctx, next) => {
-  await ctx.render('pages/admin')
+  await ctx.render('pages/admin', { msgskill: ctx.flash('msgskill'), msgfile: ctx.flash('msgfile')})
 }
 /*==============================================*/
-const validationSkills = (fields) => {
-  if (!fields.age) {
-    return { status: 'Не указано age!', err: true }
-  }
-  if (!fields.concerts) {
-    return { status: 'Не указано concerts!', err: true }
-  }
-  if (!fields.cities) {
-    return { status: 'Не указано cities!', err: true }
-  }
-  if (!fields.years) {
-    return { status: 'Не указано years!', err: true }
-  }
-  return { status: 'Ok', err: false }
-}
 module.exports.skills = async(ctx) => {
   let fields = ctx.request.body
-  const valid = validationSkills(fields)
-  if (valid.err) {
-    return ctx.redirect(`/?msg=${valid.status}`)
-  }
   db.get('skills')
   .push({ age: fields.age, concerts: fields.concerts, cities: fields.cities, years: fields.years})
   .write()
-  await ctx.redirect('/?msg=Данные успешно записаны в json')
+  ctx.flash('msgskill', 'Данные успешно записаны в json')
+  await ctx.redirect('/admin')
 }
 /*==============================================*/
-const validationUpload = (fields, files) => {
-  if (files.photo.name === '' || files.photo.size === 0) {
-    return { status: 'Не загружена картинка!', err: true }
-  }
-  if (!fields.name) {
-    return { status: 'Не указано имя картинки!', err: true }
-  }
-  if (!fields.price) {
-    return { status: 'Не указано price!', err: true }
-  }
-  return { status: 'Ok', err: false }
-}
 module.exports.upload= async(ctx) => {
   let fields = ctx.request.body
   let files = ctx.request.files
-  const valid = validationUpload(fields, files)
-  if (valid.err) {
-    return ctx.redirect(`/?msg=${valid.status}`)
-  }
   db.get('upload')
   .push({ photo: files.photo.path, name: fields.name, price: fields.price})
   .write()
-  await ctx.redirect('/?msg=Картинка успешно загружена')
+  ctx.flash('msgfile', 'Картинка успешно загружена')
+  await ctx.redirect('/admin')
 }
