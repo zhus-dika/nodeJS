@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-var util = require('util');
 const readFiles = require('../readFiles');
 
-module.exports = (base, newDir) => {
-    var files = readFiles(base, 0);
+module.exports = async (base, newDir) => {
+    var files = await readFiles(base, 0);
     /****create new dir for files***/
     if (!fs.existsSync(newDir)) {
         fs.mkdirSync(newDir, function (err) {
