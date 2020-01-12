@@ -4,8 +4,7 @@ const path = require('path')
 const nodemailer = require('nodemailer')
 const config = require('../config.json')
 module.exports.get = function (req, res) {
-    res.render('../template/pages/index', {msgemail: req.flash('msgemail')})
-
+    res.render('../template/pages/index')
   }
 module.exports.post = (req, res, next) => {
     let form = new formidable.IncomingForm()
@@ -35,5 +34,5 @@ module.exports.post = (req, res, next) => {
   })
     })
     req.flash('msgemail', 'Письмо успешно отправлено!')
-    res.redirect('/')
+    res.render('../template/pages/index', {msgemail: req.flash('msgemail')})
   }

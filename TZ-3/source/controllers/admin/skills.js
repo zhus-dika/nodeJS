@@ -14,5 +14,5 @@ module.exports.post = (req, res, next) => {
     .write()
   })
   req.flash('msgskill','Скиллы записаны в json')
-  res.redirect('/admin')
+  res.render('../template/pages/admin', { msgskill: req.flash('msgskill')})
 }

@@ -23,7 +23,7 @@ module.exports.post = (req, res, next) => {
       .push({ photo: fileName, name: fields.name, price: fields.price})
       .write()
       req.flash('msgfile','Картинка успешно загружена')
-      res.redirect('/admin')
+      res.render('../template/pages/admin', { msgfile: req.flash('msgfile') })
     })
   })
 }

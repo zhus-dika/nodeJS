@@ -5,7 +5,7 @@ const path = require('path')
 const db = require('../models/db')
  
 module.exports.get = (req, res, next) => {
-  res.render('../template/pages/login', { msglogin: req.flash('msglogin') })
+  res.render('../template/pages/login')
 }
 db.defaults({ users: [], messages: [], skills: [], upload: [] })
 .write()
@@ -25,7 +25,7 @@ module.exports.post = (req, res, next) => {
     .write()
   })
   req.flash('msglogin', 'Данные успешно записаны в json')
-  res.redirect('/login')
+  res.render('../template/pages/login', { msglogin: req.flash('msglogin') })
 }
 /*const validation = (fields, err) => {
   if (!fields.email) {
