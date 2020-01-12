@@ -5,18 +5,27 @@
   },
   "skills": [
     {
-      "age": "35",
-      "concerts": "10",
-      "cities": "10",
-      "years": "15"
+      "id": "age",
+      "number": "10",
+      "text": "Возраст начала занятий на скрипке"
     },
     {
-      "age": "11",
-      "concerts": "15",
-      "cities": "25",
-      "years": "10"
+      "id": "concerts",
+      "number": "10",
+      "text": "Концертов отыграл"
+    },
+    {
+      "id": "cities",
+      "number": "10",
+      "text": "Максимальное число городов в туре"
+    },
+    {
+      "id": "years",
+      "number": "10",
+      "text": "Лет на сцене в качестве скрипача"
     }
-  ],
+  ]
+,
   "upload": [
     {
       "photo": "../public/assets/img/products/1280px-Claude_Monet_-_Morning_on_the_Seine_-_Google_Art_Project.jpg",

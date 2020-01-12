@@ -6,12 +6,9 @@ const isAdmin = (req, res, next) => {
     
     return next()
   }
-  // если нет, то перебросить пользователя страницу login сайта
-  console.log(req.session.isAdmin)
-  req.flash('msglogin', 'Вы не авторизованы')
+  // если нет, то перебросить пользователя на страницу login
   res.redirect('/login')
 }
 module.exports.get =([isAdmin, (req, res, next) => {
-  console.log(req.session.isAdmin)
     res.render('../template/pages/admin')
   }])
