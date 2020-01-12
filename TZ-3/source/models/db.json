@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "email": "abc@gmail.com",
+      "password": "12345"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "qwerty"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "nnbcg"
+    },
+    {
+      "email": "abc@gmail",
+      "password": "bnvcxbvcx"
+    }
+  ],
+  "skills": [
+    {
+      "age": "35",
+      "concerts": "10",
+      "cities": "10",
+      "years": "15"
+    },
+    {
+      "age": "11",
+      "concerts": "11",
+      "cities": "11",
+      "years": "11"
+    },
+    {
+      "age": "12",
+      "concerts": "15",
+      "cities": "20",
+      "years": "10"
+    }
+  ],
+  "upload": [
+    {
+      "photo": "../public/assets/img/products/1280px-Claude_Monet_-_Morning_on_the_Seine_-_Google_Art_Project.jpg",
+      "name": "monet",
+      "price": "invaluable"
+    },
+    {
+      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-3/source/images/products/Vincent_van_Gogh_-_Wheat_Field_with_Cypresses_-_Google_Art_Project.jpg",
+      "name": "van gogh",
+      "price": "invaluable"
+    },
+    {
+      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-3/source/images/products/Claude_Monet_038.jpg",
+      "name": "monet",
+      "price": "invaluable"
+    }
+  ],
+  "messages": []
+}

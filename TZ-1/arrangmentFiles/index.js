@@ -1,17 +1,14 @@
 const fs = require('fs');
 const path = require('path');
-var util = require('util');
 const readFiles = require('../readFiles');
-module.exports = (base, newDir) => {
-    var files = readFiles(base, 0);
+
+module.exports = async (base, newDir) => {
+    var files = await readFiles(base, 0);
     /****create new dir for files***/
-    const mkdir = util.promisify(fs.mkdir);
     if (!fs.existsSync(newDir)) {
-        mkdir(newDir).then((result)=>{
-            console.log(newDir + ' dir created')
-        }).catch((error) => {
-            console.log(error)
-        });
+        fs.mkdirSync(newDir, function (err) {
+            if (err) console.error(err);
+        })
     }
     /**************** arrangment file objects *******************/
     files.forEach(item => { 
