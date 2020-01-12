@@ -6,7 +6,7 @@ const db = require('../models/db')
 const config = require('../config.json')
 /*==============================================*/
 module.exports.index = async (ctx, next) => {
-    await ctx.render('pages/index', {msgemail: ctx.flash('msgemail')})
+    await ctx.render('pages/index')
   }
   /*==============================================*/
   module.exports.auth = async(ctx) => {
@@ -15,7 +15,7 @@ module.exports.index = async (ctx, next) => {
   .push({ email: fields.email, password: fields.password})
   .write()
   ctx.flash('msglogin', 'Авторизация прошла успешно')
-  await ctx.redirect('/login')
+  await ctx.render('pages/login', { msglogin: ctx.flash('msglogin')})
 }
 /*==============================================*/
 module.exports.message = async(ctx, next) => {
@@ -34,23 +34,22 @@ module.exports.message = async(ctx, next) => {
     // если есть ошибки при отправке - сообщаем об этом
     if (error) {
       return ctx.json({
-
         msg: `При отправке письма произошла ошибка!: ${error}`,
         status: 'Error'
       })
     }
   })
   ctx.flash('msgemail', 'Сообщение успешно отправлено')
-  await ctx.redirect('/')
+  await ctx.render('pages/index', {msgemail: ctx.flash('msgemail')})
   }
 
 /*==============================================*/
 module.exports.login = async(ctx, next) => {
-  await ctx.render('pages/login', { msglogin: ctx.flash('msglogin')})
+  await ctx.render('pages/login')
 }
 /*==============================================*/
 module.exports.admin = async (ctx, next) => {
-  await ctx.render('pages/admin', { msgskill: ctx.flash('msgskill'), msgfile: ctx.flash('msgfile')})
+  await ctx.render('pages/admin')
 }
 /*==============================================*/
 module.exports.skills = async(ctx) => {
@@ -59,7 +58,7 @@ module.exports.skills = async(ctx) => {
   .push({ age: fields.age, concerts: fields.concerts, cities: fields.cities, years: fields.years})
   .write()
   ctx.flash('msgskill', 'Данные успешно записаны в json')
-  await ctx.redirect('/admin')
+  await ctx.render('pages/admin', { msgskill: ctx.flash('msgskill')})
 }
 /*==============================================*/
 module.exports.upload= async(ctx) => {
@@ -69,5 +68,5 @@ module.exports.upload= async(ctx) => {
   .push({ photo: files.photo.path, name: fields.name, price: fields.price})
   .write()
   ctx.flash('msgfile', 'Картинка успешно загружена')
-  await ctx.redirect('/admin')
+  await ctx.render('pages/admin', { msgfile: ctx.flash('msgfile')})
 }

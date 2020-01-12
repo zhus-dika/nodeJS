@@ -43,6 +43,10 @@
     {
       "email": "abc@gmail",
       "password": "bfdzbz"
+    },
+    {
+      "email": "zhus.botagoz@gmail.com",
+      "password": "vcfvzd"
     }
   ],
   "skills": [
@@ -63,6 +67,12 @@
       "concerts": "11",
       "cities": "11",
       "years": "11"
+    },
+    {
+      "age": "12",
+      "concerts": "15",
+      "cities": "20",
+      "years": "10"
     }
   ],
   "upload": [
@@ -85,6 +95,11 @@
       "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_ca92c3126eb6e0efcfd653cd33846dd8",
       "name": "renoir",
       "price": "invaluable"
+    },
+    {
+      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_3b478f2f8beb4f3fa2f03f078a4d8596",
+      "name": "house",
+      "price": "5000"
     }
   ]
 }
