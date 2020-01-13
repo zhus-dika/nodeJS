@@ -37,6 +37,12 @@
       "photo": "public/assets/img/products/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg",
       "name": "van gogh",
       "price": "invaluable"
+    },
+    {
+      "id": 2,
+      "photo": "public/assets/img/products/1280px-Claude_Monet_-_Morning_on_the_Seine_-_Google_Art_Project.jpg",
+      "name": "monet",
+      "price": "invaluable"
     }
   ]
 }

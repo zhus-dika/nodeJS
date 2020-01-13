@@ -4,7 +4,6 @@ const session = require('express-session')
 const cookie = require('cookie-parser')
 const flash = require('connect-flash')
 const path = require('path')
-global.count = 0
 const app = express()
 app.use(session({
   secret: 'secret',
