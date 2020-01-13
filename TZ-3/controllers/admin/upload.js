@@ -3,15 +3,10 @@ const fs = require('fs')
 const formidable = require('formidable')
 const db = require('../../models/db')
 const getProductsNumber = () => {
-  for (let i = 0; ; i++) {
-    if (!db
-      .get('products')
-      .find({id: i})
-      .get('photo')
-      .value()){
-      return i
-    }
-  }
+  return db
+  .get('products')
+  .value()
+  .length
 }
 module.exports.post = (req, res, next) => {
   let form = new formidable.IncomingForm()

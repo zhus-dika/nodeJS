@@ -6,29 +6,58 @@ const db = require('../models/db')
 const config = require('../config.json')
 const getSkills = () => {
   return {
-    age: db
+    age: {
+      number: db
     .get('skills')
     .find({id: 'age'})
     .get('number')
     .value(),
-    concerts: db
+    text: db
+    .get('skills')
+    .find({id: 'age'})
+    .get('text')
+    .value()
+    },
+    concerts: {
+      number: db
     .get('skills')
     .find({id: 'concerts'})
     .get('number')
     .value(),
-    cities: db
+    text: db
+    .get('skills')
+    .find({id: 'concerts'})
+    .get('text')
+    .value()
+    },
+    cities: {
+      number: db
     .get('skills')
     .find({id: 'cities'})
     .get('number')
     .value(),
-    years: db
+    text: db
+    .get('skills')
+    .find({id: 'cities'})
+    .get('text')
+    .value()
+    },
+    years: {
+      number: db
     .get('skills')
     .find({id: 'years'})
     .get('number')
+    .value(),
+    text: db
+    .get('skills')
+    .find({id: 'years'})
+    .get('text')
     .value()
+    }
   }
 }
 const getProducts = (id) => {
+  //если список продуктов пуст
   if (!db
     .get('products')
     .find({id: id})
@@ -56,20 +85,20 @@ module.exports.get = function (req, res) {
   let skillValues=getSkills()
   let skills = [
     {
-      "number": skillValues.age,
-      "text": "Возраст начала занятий на скрипке"
+      "number": skillValues.age.number,
+      "text": skillValues.age.text
     },
     {
-      "number": skillValues.concerts,
-      "text": "Концертов отыграл"
+      "number": skillValues.concerts.number,
+      "text": skillValues.concerts.text
     },
     {
-      "number": skillValues.cities,
-      "text": "Максимальное число городов в туре"
+      "number": skillValues.cities.number,
+      "text": skillValues.cities.text
     },
     {
-      "number": skillValues.years,
-      "text": "Лет на сцене в качестве скрипача"
+      "number": skillValues.years.number,
+      "text": skillValues.years.text
     }
   ]
   var products = []

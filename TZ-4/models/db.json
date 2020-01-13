@@ -16,12 +16,12 @@
     },
     {
       "id": "cities",
-      "number": 5,
+      "number": 100,
       "text": "Максимальное число городов в туре"
     },
     {
       "id": "years",
-      "number": 5,
+      "number": 100,
       "text": "Лет на сцене в качестве скрипача"
     }
   ],
@@ -36,6 +36,24 @@
       "id": 1,
       "photo": "public/assets/img/products/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg",
       "name": "van gogh",
+      "price": "invaluable"
+    },
+    {
+      "id": 2,
+      "photo": "public/assets/img/products/1280px-Claude_Monet_-_Morning_on_the_Seine_-_Google_Art_Project.jpg",
+      "name": "monet",
+      "price": "invaluable"
+    },
+    {
+      "id": 3,
+      "photo": "public/assets/img/products/1237px-Pierre-Auguste_Renoir_143.jpg",
+      "name": "renoir",
+      "price": "invaluable"
+    },
+    {
+      "id": 4,
+      "photo": "public/assets/img/products/989px-Monet_-_Das_Haus_in_den_Rosen.jpeg",
+      "name": "monet",
       "price": "invaluable"
     }
   ]

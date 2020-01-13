@@ -7,26 +7,54 @@ const config = require('../config.json')
 /*==============================================*/
 const getSkills = () => {
   return {
-    age: db
+    age: {
+      number: db
     .get('skills')
     .find({id: 'age'})
     .get('number')
     .value(),
-    concerts: db
+    text: db
+    .get('skills')
+    .find({id: 'age'})
+    .get('text')
+    .value()
+    },
+    concerts: {
+      number: db
     .get('skills')
     .find({id: 'concerts'})
     .get('number')
     .value(),
-    cities: db
+    text: db
+    .get('skills')
+    .find({id: 'concerts'})
+    .get('text')
+    .value()
+    },
+    cities: {
+      number: db
     .get('skills')
     .find({id: 'cities'})
     .get('number')
     .value(),
-    years: db
+    text: db
+    .get('skills')
+    .find({id: 'cities'})
+    .get('text')
+    .value()
+    },
+    years: {
+      number: db
     .get('skills')
     .find({id: 'years'})
     .get('number')
+    .value(),
+    text: db
+    .get('skills')
+    .find({id: 'years'})
+    .get('text')
     .value()
+    }
   }
 }
 const getProducts = (id) => {
@@ -54,34 +82,29 @@ const getProducts = (id) => {
   }
 }
 const getProductsNumber = () => {
-  for (let i = 0; ; i++) {
-    if (!db
-      .get('products')
-      .find({id: i})
-      .get('photo')
-      .value()){
-      return i
-    }
-  }
+  return db
+  .get('products')
+  .value()
+  .length
 }
 module.exports.index = async (ctx, next) => {
   let skillValues=getSkills()
   let skills = [
     {
-      "number": skillValues.age,
-      "text": "Возраст начала занятий на скрипке"
+      "number": skillValues.age.number,
+      "text": skillValues.age.text
     },
     {
-      "number": skillValues.concerts,
-      "text": "Концертов отыграл"
+      "number": skillValues.concerts.number,
+      "text": skillValues.concerts.text
     },
     {
-      "number": skillValues.cities,
-      "text": "Максимальное число городов в туре"
+      "number": skillValues.cities.number,
+      "text": skillValues.cities.text
     },
     {
-      "number": skillValues.years,
-      "text": "Лет на сцене в качестве скрипача"
+      "number": skillValues.years.number,
+      "text": skillValues.years.text
     }
   ]
   var products = []
@@ -176,6 +199,7 @@ module.exports.skills = async(ctx) => {
   ctx.flash('msgskill', 'Данные успешно записаны в json')
   await ctx.render('pages/admin', { msgskill: ctx.flash('msgskill')})
 }
+
 /*==============================================*/
 module.exports.upload= async(ctx) => {
   let fields = ctx.request.body
