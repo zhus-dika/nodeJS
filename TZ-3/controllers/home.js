@@ -2,10 +2,84 @@ const formidable = require('formidable')
 const fs = require('fs')
 const path = require('path')
 const nodemailer = require('nodemailer')
+const db = require('../models/db')
 const config = require('../config.json')
-module.exports.get = function (req, res) {
-    res.render('../template/pages/index')
+const getSkills = () => {
+  return {
+    age: db
+    .get('skills')
+    .find({id: 'age'})
+    .get('number')
+    .value(),
+    concerts: db
+    .get('skills')
+    .find({id: 'concerts'})
+    .get('number')
+    .value(),
+    cities: db
+    .get('skills')
+    .find({id: 'cities'})
+    .get('number')
+    .value(),
+    years: db
+    .get('skills')
+    .find({id: 'years'})
+    .get('number')
+    .value()
   }
+}
+const getProducts = (id) => {
+  if (!db
+    .get('products')
+    .find({id: id})
+    .get('photo')
+    .value()) return
+  return {
+    src: db
+    .get('products')
+    .find({id: id})
+    .get('photo')
+    .value().slice(7),
+    name: db
+    .get('products')
+    .find({id: id})
+    .get('name')
+    .value(),
+    price: db
+    .get('products')
+    .find({id: id})
+    .get('price')
+    .value()
+  }
+}
+module.exports.get = function (req, res) {
+  var skillValues=getSkills()
+  var skills = [
+    {
+      "number": skillValues.age,
+      "text": "Возраст начала занятий на скрипке"
+    },
+    {
+      "number": skillValues.concerts,
+      "text": "Концертов отыграл"
+    },
+    {
+      "number": skillValues.cities,
+      "text": "Максимальное число городов в туре"
+    },
+    {
+      "number": skillValues.years,
+      "text": "Лет на сцене в качестве скрипача"
+    }
+  ]
+  var products = []
+  for (let i = 0; ; i++) {
+    if(getProducts(i)){
+      products.push(getProducts(i))
+    } else break
+  }
+  res.render('../template/pages/index', {skills: skills, products: products})
+}
 module.exports.post = (req, res, next) => {
     let form = new formidable.IncomingForm()
     form.parse(req, function (err, fields) {
