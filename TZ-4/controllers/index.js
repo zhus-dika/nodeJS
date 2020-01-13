@@ -6,15 +6,18 @@ const db = require('../models/db')
 const config = require('../config.json')
 /*==============================================*/
 module.exports.index = async (ctx, next) => {
-    await ctx.render('pages/index')
-  }
+  await ctx.render('pages/index')
+}
   /*==============================================*/
   module.exports.auth = async(ctx) => {
   let fields = ctx.request.body
-  db.get('users')
-  .push({ email: fields.email, password: fields.password})
-  .write()
-  ctx.flash('msglogin', 'Авторизация прошла успешно')
+  const email = db.get('users').get('email').value()
+  const pswd = db.get('users').get('password').value()
+  if (fields.email === email && fields.password == pswd) {
+    ctx.session.isAdmin = true
+    ctx.redirect('/admin')
+  }
+  ctx.flash('msglogin', 'Вы не авторизованы')
   await ctx.render('pages/login', { msglogin: ctx.flash('msglogin')})
 }
 /*==============================================*/
@@ -45,10 +48,23 @@ module.exports.message = async(ctx, next) => {
 
 /*==============================================*/
 module.exports.login = async(ctx, next) => {
-  await ctx.render('pages/login')
+  ctx.flash('msglogin', 'Вы не авторизованы')
+  await ctx.render('pages/login', { msglogin: ctx.flash('msglogin')})
 }
 /*==============================================*/
+const isAdmin = (ctx, next) => {
+  // если в сессии текущего пользователя есть пометка о том, что он является
+  // администратором
+  if (ctx.session.isAdmin) {
+    // то всё хорошо :)
+    
+    return next()
+  }
+  // если нет, то перебросить пользователя на страницу login
+  ctx.redirect('/login')
+}
 module.exports.admin = async (ctx, next) => {
+  isAdmin(ctx, next)
   await ctx.render('pages/admin')
 }
 /*==============================================*/
