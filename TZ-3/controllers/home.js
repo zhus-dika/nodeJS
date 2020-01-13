@@ -53,8 +53,8 @@ const getProducts = (id) => {
   }
 }
 module.exports.get = function (req, res) {
-  var skillValues=getSkills()
-  var skills = [
+  let skillValues=getSkills()
+  let skills = [
     {
       "number": skillValues.age,
       "text": "Возраст начала занятий на скрипке"

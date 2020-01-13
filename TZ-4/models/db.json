@@ -1,17 +1,42 @@
 {
-  "users": 
-    {
-      "email": "abc@gmail.com",
-      "password": "12345"
-    },
+  "users": {
+    "email": "abc@gmail.com",
+    "password": "12345"
+  },
   "skills": [
     {
-      "age": "35",
-      "concerts": "10",
-      "cities": "20",
-      "years": "15"
+      "id": "age",
+      "number": 100,
+      "text": "Возраст начала занятий на скрипке"
+    },
+    {
+      "id": "concerts",
+      "number": 100,
+      "text": "Концертов отыграл"
+    },
+    {
+      "id": "cities",
+      "number": 5,
+      "text": "Максимальное число городов в туре"
+    },
+    {
+      "id": "years",
+      "number": 5,
+      "text": "Лет на сцене в качестве скрипача"
     }
   ],
-  "upload": [
+  "products": [
+    {
+      "id": 0,
+      "photo": "public/assets/img/products/Vincent_van_Gogh_-_Wheat_Field_with_Cypresses_-_Google_Art_Project.jpg",
+      "name": "van gogh",
+      "price": "invaluable"
+    },
+    {
+      "id": 1,
+      "photo": "public/assets/img/products/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg",
+      "name": "van gogh",
+      "price": "invaluable"
+    }
   ]
 }
