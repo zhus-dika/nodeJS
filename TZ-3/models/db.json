@@ -11,12 +11,12 @@
     },
     {
       "id": "concerts",
-      "number": 1000,
+      "number": 500,
       "text": "Концертов отыграл"
     },
     {
       "id": "cities",
-      "number": 1,
+      "number": 100,
       "text": "Максимальное число городов в туре"
     },
     {
@@ -47,6 +47,12 @@
     {
       "id": 3,
       "photo": "public/assets/img/products/Claude_Monet_038.jpg",
+      "name": "monet",
+      "price": "invaluable"
+    },
+    {
+      "id": 4,
+      "photo": "public/assets/img/products/1280px-Claude_Monet_-_Morning_on_the_Seine_-_Google_Art_Project.jpg",
       "name": "monet",
       "price": "invaluable"
     }

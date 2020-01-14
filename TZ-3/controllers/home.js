@@ -4,85 +4,9 @@ const path = require('path')
 const nodemailer = require('nodemailer')
 const db = require('../models/db')
 const config = require('../config.json')
-const getSkills = () => {
-  return {
-    age: {
-      number: db
-    .get('skills')
-    .find({id: 'age'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'age'})
-    .get('text')
-    .value()
-    },
-    concerts: {
-      number: db
-    .get('skills')
-    .find({id: 'concerts'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'concerts'})
-    .get('text')
-    .value()
-    },
-    cities: {
-      number: db
-    .get('skills')
-    .find({id: 'cities'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'cities'})
-    .get('text')
-    .value()
-    },
-    years: {
-      number: db
-    .get('skills')
-    .find({id: 'years'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'years'})
-    .get('text')
-    .value()
-    }
-  }
-}
-const getProducts = (id) => {
-  //если список продуктов пуст
-  if (!db
-    .get('products')
-    .find({id: id})
-    .get('photo')
-    .value()) return
-  return {
-    src: db
-    .get('products')
-    .find({id: id})
-    .get('photo')
-    .value().slice(7),
-    name: db
-    .get('products')
-    .find({id: id})
-    .get('name')
-    .value(),
-    price: db
-    .get('products')
-    .find({id: id})
-    .get('price')
-    .value()
-  }
-}
+
 module.exports.get = function (req, res) {
-  let skillValues=getSkills()
+  let skillValues=db.getSkills()
   let skills = [
     {
       "number": skillValues.age.number,
@@ -103,8 +27,9 @@ module.exports.get = function (req, res) {
   ]
   var products = []
   for (let i = 0; ; i++) {
-    if(getProducts(i)){
-      products.push(getProducts(i))
+    const val = db.getProducts(i)
+    if(val){
+      products.push(val)
     } else break
   }
   res.render('../template/pages/index', {skills: skills, products: products})
@@ -136,7 +61,7 @@ module.exports.post = (req, res, next) => {
     }
   })
     })
-    let skillValues=getSkills()
+    let skillValues=db.getSkills()
     let skills = [
       {
         "number": skillValues.age.number,
@@ -157,8 +82,8 @@ module.exports.post = (req, res, next) => {
     ]
     var products = []
     for (let i = 0; ; i++) {
-      if(getProducts(i)){
-        products.push(getProducts(i))
+      if(db.getProducts(i)){
+        products.push(db.getProducts(i))
       } else break
     }
     req.flash('msgemail', 'Письмо успешно отправлено!')

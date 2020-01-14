@@ -10,60 +10,9 @@ const isAdmin = (req, res, next) => {
   // если нет, то перебросить пользователя на страницу login
   res.redirect('/login')
 }
-const getSkills = () => {
-  return {
-    age: {
-      number: db
-    .get('skills')
-    .find({id: 'age'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'age'})
-    .get('text')
-    .value()
-    },
-    concerts: {
-      number: db
-    .get('skills')
-    .find({id: 'concerts'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'concerts'})
-    .get('text')
-    .value()
-    },
-    cities: {
-      number: db
-    .get('skills')
-    .find({id: 'cities'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'cities'})
-    .get('text')
-    .value()
-    },
-    years: {
-      number: db
-    .get('skills')
-    .find({id: 'years'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'years'})
-    .get('text')
-    .value()
-    }
-  }
-}
+
 module.exports.get =([isAdmin, (req, res, next) => {
-  let skillValues=getSkills()
+  let skillValues=db.getSkills()
   let skills = [
     {
       "number": skillValues.age.number,

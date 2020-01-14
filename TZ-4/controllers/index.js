@@ -5,90 +5,9 @@ const nodemailer = require('nodemailer')
 const db = require('../models/db')
 const config = require('../config.json')
 /*==============================================*/
-const getSkills = () => {
-  return {
-    age: {
-      number: db
-    .get('skills')
-    .find({id: 'age'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'age'})
-    .get('text')
-    .value()
-    },
-    concerts: {
-      number: db
-    .get('skills')
-    .find({id: 'concerts'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'concerts'})
-    .get('text')
-    .value()
-    },
-    cities: {
-      number: db
-    .get('skills')
-    .find({id: 'cities'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'cities'})
-    .get('text')
-    .value()
-    },
-    years: {
-      number: db
-    .get('skills')
-    .find({id: 'years'})
-    .get('number')
-    .value(),
-    text: db
-    .get('skills')
-    .find({id: 'years'})
-    .get('text')
-    .value()
-    }
-  }
-}
-const getProducts = (id) => {
-  if (!db
-    .get('products')
-    .find({id: id})
-    .get('photo')
-    .value()) return
-  return {
-    src: db
-    .get('products')
-    .find({id: id})
-    .get('photo')
-    .value().slice(7),
-    name: db
-    .get('products')
-    .find({id: id})
-    .get('name')
-    .value(),
-    price: db
-    .get('products')
-    .find({id: id})
-    .get('price')
-    .value()
-  }
-}
-const getProductsNumber = () => {
-  return db
-  .get('products')
-  .value()
-  .length
-}
+
 module.exports.index = async (ctx, next) => {
-  let skillValues=getSkills()
+  let skillValues=db.getSkills()
   let skills = [
     {
       "number": skillValues.age.number,
@@ -109,8 +28,9 @@ module.exports.index = async (ctx, next) => {
   ]
   var products = []
   for (let i = 0; ; i++) {
-    if(getProducts(i)){
-      products.push(getProducts(i))
+    const val = db.getProducts(i)
+    if(val){
+      products.push(val)
     } else break
   }
   await ctx.render('pages/index', {skills: skills, products: products})
@@ -149,7 +69,7 @@ module.exports.message = async(ctx, next) => {
       })
     }
   })
-  let skillValues=getSkills()
+  let skillValues=db.getSkills()
   let skills = [
     {
       "number": skillValues.age.number,
@@ -170,8 +90,9 @@ module.exports.message = async(ctx, next) => {
   ]
   var products = []
   for (let i = 0; ; i++) {
-    if(getProducts(i)){
-      products.push(getProducts(i))
+    const val = db.getProducts(i)
+    if(val){
+      products.push(val)
     } else break
   }
   ctx.flash('msgemail', 'Сообщение успешно отправлено')
@@ -197,7 +118,7 @@ const isAdmin = (ctx, next) => {
 }
 module.exports.admin = async (ctx, next) => {
   isAdmin(ctx, next)
-  let skillValues = getSkills()
+  let skillValues = db.getSkills()
   let skills = [
     {
       "number": skillValues.age.number,
@@ -219,15 +140,8 @@ module.exports.admin = async (ctx, next) => {
   await ctx.render('pages/admin', {skills: skills})
 }
 /*==============================================*/
-const setSkill = (key, val) => {
-  db
-    .get('skills')
-    .find({id: key})
-    .assign({'number': parseInt(val)})
-    .write()
-}
 module.exports.skills = async(ctx) => {
-  let skillValues = getSkills()
+  let skillValues = db.getSkills()
   let skills = [
     {
       "number": skillValues.age.number,
@@ -249,19 +163,19 @@ module.exports.skills = async(ctx) => {
   let fields = ctx.request.body
   if(fields.age) {
     skills[0].number = fields.age
-    setSkill('age', fields.age)
+    db.setSkill('age', fields.age)
   }
   if(fields.concerts) {
     skills[1].number = fields.concerts
-    setSkill('concerts', fields.concerts)
+    db.setSkill('concerts', fields.concerts)
   }
   if(fields.cities) {
     skills[2].number = fields.cities
-    setSkill('cities', fields.cities)
+    db.setSkill('cities', fields.cities)
   }
   if(fields.years) {
     skills[3].number = fields.years
-    setSkill('years', fields.years)
+    db.setSkill('years', fields.years)
   }
   ctx.flash('msgskill', 'Данные успешно записаны в json')
   await ctx.render('pages/admin', { msgskill: ctx.flash('msgskill'), skills: skills})
@@ -269,7 +183,7 @@ module.exports.skills = async(ctx) => {
 
 /*==============================================*/
 module.exports.upload= async(ctx) => {
-  let skillValues = getSkills()
+  let skillValues = db.getSkills()
   let skills = [
     {
       "number": skillValues.age.number,
@@ -298,7 +212,7 @@ module.exports.upload= async(ctx) => {
         return
       }
     })
-    let count = getProductsNumber()
+    let count = db.getProductsNumber()
     db.get('products')
       .push({ id: count++, photo: fileName, name: fields.name, price: fields.price})
       .write()
