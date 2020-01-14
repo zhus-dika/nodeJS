@@ -149,8 +149,33 @@ module.exports.message = async(ctx, next) => {
       })
     }
   })
+  let skillValues=getSkills()
+  let skills = [
+    {
+      "number": skillValues.age.number,
+      "text": skillValues.age.text
+    },
+    {
+      "number": skillValues.concerts.number,
+      "text": skillValues.concerts.text
+    },
+    {
+      "number": skillValues.cities.number,
+      "text": skillValues.cities.text
+    },
+    {
+      "number": skillValues.years.number,
+      "text": skillValues.years.text
+    }
+  ]
+  var products = []
+  for (let i = 0; ; i++) {
+    if(getProducts(i)){
+      products.push(getProducts(i))
+    } else break
+  }
   ctx.flash('msgemail', 'Сообщение успешно отправлено')
-  await ctx.render('pages/index', {msgemail: ctx.flash('msgemail')})
+  await ctx.render('pages/index', {msgemail: ctx.flash('msgemail'), skills: skills, products: products})
   }
 
 /*==============================================*/
@@ -172,7 +197,26 @@ const isAdmin = (ctx, next) => {
 }
 module.exports.admin = async (ctx, next) => {
   isAdmin(ctx, next)
-  await ctx.render('pages/admin')
+  let skillValues = getSkills()
+  let skills = [
+    {
+      "number": skillValues.age.number,
+      "text": skillValues.age.text
+    },
+    {
+      "number": skillValues.concerts.number,
+      "text": skillValues.concerts.text
+    },
+    {
+      "number": skillValues.cities.number,
+      "text": skillValues.cities.text
+    },
+    {
+      "number": skillValues.years.number,
+      "text": skillValues.years.text
+    }
+  ]
+  await ctx.render('pages/admin', {skills: skills})
 }
 /*==============================================*/
 const setSkill = (key, val) => {
@@ -183,25 +227,67 @@ const setSkill = (key, val) => {
     .write()
 }
 module.exports.skills = async(ctx) => {
+  let skillValues = getSkills()
+  let skills = [
+    {
+      "number": skillValues.age.number,
+      "text": skillValues.age.text
+    },
+    {
+      "number": skillValues.concerts.number,
+      "text": skillValues.concerts.text
+    },
+    {
+      "number": skillValues.cities.number,
+      "text": skillValues.cities.text
+    },
+    {
+      "number": skillValues.years.number,
+      "text": skillValues.years.text
+    }
+  ]
   let fields = ctx.request.body
   if(fields.age) {
+    skills[0].number = fields.age
     setSkill('age', fields.age)
   }
   if(fields.concerts) {
+    skills[1].number = fields.concerts
     setSkill('concerts', fields.concerts)
   }
   if(fields.cities) {
+    skills[2].number = fields.cities
     setSkill('cities', fields.cities)
   }
   if(fields.years) {
+    skills[3].number = fields.years
     setSkill('years', fields.years)
   }
   ctx.flash('msgskill', 'Данные успешно записаны в json')
-  await ctx.render('pages/admin', { msgskill: ctx.flash('msgskill')})
+  await ctx.render('pages/admin', { msgskill: ctx.flash('msgskill'), skills: skills})
 }
 
 /*==============================================*/
 module.exports.upload= async(ctx) => {
+  let skillValues = getSkills()
+  let skills = [
+    {
+      "number": skillValues.age.number,
+      "text": skillValues.age.text
+    },
+    {
+      "number": skillValues.concerts.number,
+      "text": skillValues.concerts.text
+    },
+    {
+      "number": skillValues.cities.number,
+      "text": skillValues.cities.text
+    },
+    {
+      "number": skillValues.years.number,
+      "text": skillValues.years.text
+    }
+  ]
   let fields = ctx.request.body
   let files = ctx.request.files
   let upload = path.join('public','assets', 'img', 'products')
@@ -217,5 +303,5 @@ module.exports.upload= async(ctx) => {
       .push({ id: count++, photo: fileName, name: fields.name, price: fields.price})
       .write()
     ctx.flash('msgfile','Картинка успешно загружена')
-    await  ctx.render('../template/pages/admin', { msgfile: ctx.flash('msgfile') })
+    await  ctx.render('../template/pages/admin', { msgfile: ctx.flash('msgfile'), skills: skills})
 }

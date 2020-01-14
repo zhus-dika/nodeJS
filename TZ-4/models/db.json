@@ -11,12 +11,12 @@
     },
     {
       "id": "concerts",
-      "number": 100,
+      "number": 50,
       "text": "Концертов отыграл"
     },
     {
       "id": "cities",
-      "number": 100,
+      "number": 1000,
       "text": "Максимальное число городов в туре"
     },
     {
@@ -52,6 +52,24 @@
     },
     {
       "id": 4,
+      "photo": "public/assets/img/products/989px-Monet_-_Das_Haus_in_den_Rosen.jpeg",
+      "name": "monet",
+      "price": "invaluable"
+    },
+    {
+      "id": 5,
+      "photo": "public/assets/img/products/Claude_Monet_038.jpg",
+      "name": "monet",
+      "price": "invaluable"
+    },
+    {
+      "id": 6,
+      "photo": "public/assets/img/products/Claude_Monet_038.jpg",
+      "name": "monet",
+      "price": "invaluable"
+    },
+    {
+      "id": 7,
       "photo": "public/assets/img/products/989px-Monet_-_Das_Haus_in_den_Rosen.jpeg",
       "name": "monet",
       "price": "invaluable"

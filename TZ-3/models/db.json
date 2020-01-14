@@ -43,6 +43,12 @@
       "photo": "public/assets/img/products/1237px-Pierre-Auguste_Renoir_143.jpg",
       "name": "renoir",
       "price": "invaluable"
+    },
+    {
+      "id": 3,
+      "photo": "public/assets/img/products/Claude_Monet_038.jpg",
+      "name": "monet",
+      "price": "invaluable"
     }
   ]
 }
