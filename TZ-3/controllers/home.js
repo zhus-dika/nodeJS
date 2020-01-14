@@ -136,6 +136,31 @@ module.exports.post = (req, res, next) => {
     }
   })
     })
+    let skillValues=getSkills()
+    let skills = [
+      {
+        "number": skillValues.age.number,
+        "text": skillValues.age.text
+      },
+      {
+        "number": skillValues.concerts.number,
+        "text": skillValues.concerts.text
+      },
+      {
+        "number": skillValues.cities.number,
+        "text": skillValues.cities.text
+      },
+      {
+        "number": skillValues.years.number,
+        "text": skillValues.years.text
+      }
+    ]
+    var products = []
+    for (let i = 0; ; i++) {
+      if(getProducts(i)){
+        products.push(getProducts(i))
+      } else break
+    }
     req.flash('msgemail', 'Письмо успешно отправлено!')
-    res.render('../template/pages/index', {msgemail: req.flash('msgemail')})
+    res.render('../template/pages/index', {msgemail: req.flash('msgemail'), skills: skills, products: products})
   }
