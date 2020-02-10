@@ -1,105 +1,78 @@
 {
-  "users": [
-    {
-      "email": "abc@gmail.com",
-      "password": "12345"
-    },
-    {
-      "email": "abc@gmail.com",
-      "password": "777"
-    },
-    {
-      "email": "abc@gmail",
-      "password": "1111"
-    },
-    {
-      "email": "abc@gmail",
-      "password": "vfdvd"
-    },
-    {
-      "email": "abc@gmail",
-      "password": "bfdxbxdf"
-    },
-    {
-      "email": "abc@gmail",
-      "password": "1111"
-    },
-    {
-      "email": "abc@gmail",
-      "password": "bfdzbxd"
-    },
-    {
-      "email": "zhus.botagoz@gmail.com",
-      "password": "bxdngxb"
-    },
-    {
-      "email": "abc@gmail",
-      "password": "hgfxhgdx"
-    },
-    {
-      "email": "zhus.botagoz@gmail.com",
-      "password": "vfdsbfd"
-    },
-    {
-      "email": "abc@gmail",
-      "password": "bfdzbz"
-    },
-    {
-      "email": "zhus.botagoz@gmail.com",
-      "password": "vcfvzd"
-    }
-  ],
+  "users": {
+    "email": "abc@gmail.com",
+    "password": "12345"
+  },
   "skills": [
     {
-      "age": "35",
-      "concerts": "10",
-      "cities": "20",
-      "years": "15"
+      "id": "age",
+      "number": 100,
+      "text": "Возраст начала занятий на скрипке"
     },
     {
-      "age": "11",
-      "concerts": "22",
-      "cities": "33",
-      "years": "5"
+      "id": "concerts",
+      "number": 1000,
+      "text": "Концертов отыграл"
     },
     {
-      "age": "11",
-      "concerts": "11",
-      "cities": "11",
-      "years": "11"
+      "id": "cities",
+      "number": 1000,
+      "text": "Максимальное число городов в туре"
     },
     {
-      "age": "12",
-      "concerts": "15",
-      "cities": "20",
-      "years": "10"
+      "id": "years",
+      "number": 100,
+      "text": "Лет на сцене в качестве скрипача"
     }
   ],
-  "upload": [
+  "products": [
     {
-      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_de406676ac28617126157ad4f057f12a",
+      "id": 0,
+      "photo": "public/assets/img/products/Vincent_van_Gogh_-_Wheat_Field_with_Cypresses_-_Google_Art_Project.jpg",
       "name": "van gogh",
       "price": "invaluable"
     },
     {
-      "photo": "../public/assets/img/products/1280px-Claude_Monet_-_Morning_on_the_Seine_-_Google_Art_Project.jpg",
+      "id": 1,
+      "photo": "public/assets/img/products/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg",
+      "name": "van gogh",
+      "price": "invaluable"
+    },
+    {
+      "id": 2,
+      "photo": "public/assets/img/products/1280px-Claude_Monet_-_Morning_on_the_Seine_-_Google_Art_Project.jpg",
       "name": "monet",
       "price": "invaluable"
     },
     {
-      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-3/source/images/products/Vincent_van_Gogh_-_Wheat_Field_with_Cypresses_-_Google_Art_Project.jpg",
-      "name": "van gogh",
-      "price": "invaluable"
-    },
-    {
-      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_ca92c3126eb6e0efcfd653cd33846dd8",
+      "id": 3,
+      "photo": "public/assets/img/products/1237px-Pierre-Auguste_Renoir_143.jpg",
       "name": "renoir",
       "price": "invaluable"
     },
     {
-      "photo": "/home/dinara/Yandex.Disk/loftschool/nodeJS/TZ/TZ/TZ-4/public/upload/upload_3b478f2f8beb4f3fa2f03f078a4d8596",
-      "name": "house",
-      "price": "5000"
+      "id": 4,
+      "photo": "public/assets/img/products/989px-Monet_-_Das_Haus_in_den_Rosen.jpeg",
+      "name": "monet",
+      "price": "invaluable"
+    },
+    {
+      "id": 5,
+      "photo": "public/assets/img/products/Claude_Monet_038.jpg",
+      "name": "monet",
+      "price": "invaluable"
+    },
+    {
+      "id": 6,
+      "photo": "public/assets/img/products/Claude_Monet_038.jpg",
+      "name": "monet",
+      "price": "invaluable"
+    },
+    {
+      "id": 7,
+      "photo": "public/assets/img/products/989px-Monet_-_Das_Haus_in_den_Rosen.jpeg",
+      "name": "monet",
+      "price": "invaluable"
     }
   ]
 }

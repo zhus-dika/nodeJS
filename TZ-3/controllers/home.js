@@ -2,10 +2,38 @@ const formidable = require('formidable')
 const fs = require('fs')
 const path = require('path')
 const nodemailer = require('nodemailer')
+const db = require('../models/db')
 const config = require('../config.json')
+
 module.exports.get = function (req, res) {
-    res.render('../template/pages/index')
+  let skillValues=db.getSkills()
+  let skills = [
+    {
+      "number": skillValues.age.number,
+      "text": skillValues.age.text
+    },
+    {
+      "number": skillValues.concerts.number,
+      "text": skillValues.concerts.text
+    },
+    {
+      "number": skillValues.cities.number,
+      "text": skillValues.cities.text
+    },
+    {
+      "number": skillValues.years.number,
+      "text": skillValues.years.text
+    }
+  ]
+  var products = []
+  for (let i = 0; ; i++) {
+    const val = db.getProducts(i)
+    if(val){
+      products.push(val)
+    } else break
   }
+  res.render('../template/pages/index', {skills: skills, products: products})
+}
 module.exports.post = (req, res, next) => {
     let form = new formidable.IncomingForm()
     form.parse(req, function (err, fields) {
@@ -33,6 +61,31 @@ module.exports.post = (req, res, next) => {
     }
   })
     })
+    let skillValues=db.getSkills()
+    let skills = [
+      {
+        "number": skillValues.age.number,
+        "text": skillValues.age.text
+      },
+      {
+        "number": skillValues.concerts.number,
+        "text": skillValues.concerts.text
+      },
+      {
+        "number": skillValues.cities.number,
+        "text": skillValues.cities.text
+      },
+      {
+        "number": skillValues.years.number,
+        "text": skillValues.years.text
+      }
+    ]
+    var products = []
+    for (let i = 0; ; i++) {
+      if(db.getProducts(i)){
+        products.push(db.getProducts(i))
+      } else break
+    }
     req.flash('msgemail', 'Письмо успешно отправлено!')
-    res.render('../template/pages/index', {msgemail: req.flash('msgemail')})
+    res.render('../template/pages/index', {msgemail: req.flash('msgemail'), skills: skills, products: products})
   }
